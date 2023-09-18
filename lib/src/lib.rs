@@ -43,13 +43,14 @@ enum Token {
 	#[token("<<")] // Binary operators.
 	#[token(">>")] // Binary operators.
 	#[regex("[><=]=?")] // Binary operators.
-	#[regex(r"[+*/%&|]")] // Binary operators.
+	#[regex(r"[*/%&|]")] // Binary operators.
 	MiddleOperator,
 	#[regex(r"[!~]")] // Unary operators.
 	#[regex(r"%[a-zA-Z_]+")] // e.g., `%hi(symbol)`.
 	#[regex(r"[\[({]")] // Opening delimiters.
 	RightOperator,
-	#[token("-")]
+	// Both can be e.g., `2 - 3` or `2 + -3`.
+	#[regex("[-+]")]
 	MiddleOrRightOperator,
 	#[regex(r"[a-zA-Z_][a-zA-Z0-9_.]*")] // Identifier.
 	#[regex(r"0[bB][01]+")] // Binary number.
